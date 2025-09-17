@@ -65,6 +65,6 @@ PYTHON - [View CYBOARD code](./py/cyboard.py)
 - It does not integrate with larger school databases or portals.
 - It is intended for small class sizes only, not for entire institutions.
 
-HTML AND JS- [View CYBOARD code](./htmljs/slams.html)
+HTML AND JS- [View SLAMS code](./htmljs/slams.html)
 
-PYTHON - [View CYBOARD code](./py/slams.py)
+PYTHON - [View SLAMS code](./py/slams.py)
