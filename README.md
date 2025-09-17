@@ -32,14 +32,6 @@ PYTHON - [View CYBOARD code](./py/cyboard.py)
 
 # SLAMS
 
-## Objectives
-
-1. To track the students attendance accurately.
-2. To evaluate student grades.
-3. To monitor student progress.
-4. To help teachers see student attendance and performance.
-5. To improve student learning.
-
 ## Statement of the Problem
 
 1. Manual attendance and grade tracking are time-consuming.
@@ -47,6 +39,14 @@ PYTHON - [View CYBOARD code](./py/cyboard.py)
 3. Existing systems are not efficient.
 4. Teachers want to know how students are doing in class.
 5. Student attendance and grades should be accurate.
+
+## Objectives
+
+1. To track the students attendance accurately.
+2. To evaluate student grades.
+3. To monitor student progress.
+4. To help teachers see student attendance and performance.
+5. To improve student learning.
 
 ## Scope and Limitation
 
