@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SLAMS</title>
+</head>
+<body>
+  <h1>SLAMS</h1>
+
+  <input id="name" placeholder="Student Name">
+  <button onclick="setStudent()">Start</button>
+  <br><br>
+
+  <button onclick="timeIn()">Time In</button>
+  <button onclick="timeOut()">Time Out</button>
+  <button onclick="addGrade()">Add Grade</button>
+  <button onclick="showReport()">Show Report</button>
+
+  <h3>Output</h3>
+  <pre id="output"></pre>
+
+<script>
+let student = {name:"", in:"", out:"", grades:[]};
+
+function setStudent(){
+  student.name = document.getElementById("name").value;
+  student.in = ""; student.out = ""; student.grades = [];
+  document.getElementById("output").innerText = "Student: " + student.name;
+}
+
+function timeIn(){ student.in = prompt("Enter Time In:"); }
+function timeOut(){ student.out = prompt("Enter Time Out:"); }
+function addGrade(){ student.grades.push(Number(prompt("Enter Grade (0-100):"))); }
+
+function showReport(){
+  let avg = student.grades.length ? (student.grades.reduce((a,b)=>a+b)/student.grades.length).toFixed(2) : "No grades";
+  document.getElementById("output").innerText =
+    "Name: " + student.name +
+    "\nTime In: " + student.in +
+    "\nTime Out: " + student.out +
+    "\nGrades: " + student.grades +
+    "\nAverage: " + avg;
+}
+</script>
+</body>
+</html>
