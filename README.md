@@ -24,7 +24,8 @@ This project will focus only on boarding houses in Iloilo City. Owners can add d
 
 The system is just a simple prototype with basic functions. It will not have online payments or a mobile app. The list of boarding houses will only show what owners share.
 
-[View CYBOARD code](./htmljs/cyboard.html)
+HTML AND JS- [View CYBOARD code](./htmljs/cyboard.html)
+PYTHON - [View CYBOARD code](./py/cyboard.py)
 
 ---
 
@@ -62,3 +63,6 @@ The system is just a simple prototype with basic functions. It will not have onl
 - It is limited to basic grading evaluation (numeric and letter grade only).
 - It does not integrate with larger school databases or portals.
 - It is intended for small class sizes only, not for entire institutions.
+
+HTML AND JS- [View CYBOARD code](./htmljs/slams.html)
+PYTHON - [View CYBOARD code](./py/slams.py)
