@@ -28,6 +28,16 @@ HTML AND JS- [View CYBOARD code](./htmljs/cyboard.html)
 
 PYTHON - [View CYBOARD code](./py/cyboard.py)
 
+FINAL OUTPUT - [View CYBOARD code](./finals_output)
+
+### Screenshots
+
+**Add Boarding House Interface:**
+![CYBOARD Add Boarding House](./images/add.png)
+
+**Search Boarding Houses Interface:**
+![CYBOARD Search Houses](./images/search.png)
+
 ---
 
 # SLAMS

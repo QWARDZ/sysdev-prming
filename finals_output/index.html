@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+		<title>CYBOARD</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>CYBOARD - Boarding House Finder</h1>
+			<p>Find boarding houses in Iloilo City</p>
+
+			<div class="tabs">
+				<button class="tab-button active" onclick="showPage('search')">🔍 Search Boarding Houses</button>
+				<button class="tab-button" onclick="showPage('add')">➕ Add Boarding House</button>
+			</div>
+
+			<div id="searchPage" class="page active">
+				<div class="search-section">
+					<h2>Search Boarding Houses</h2>
+					Location:
+					<select id="loc">
+						<option value="">All</option>
+						<option value="Jaro">Jaro</option>
+						<option value="La Paz">La Paz</option>
+						<option value="Molo">Molo</option>
+					</select>
+
+					Max Price: <input type="number" id="price" placeholder="e.g. 5000" />
+					<button onclick="search()">🔍 Search</button>
+
+					<h3>Results:</h3>
+					<div id="results"></div>
+				</div>
+			</div>
+
+			<div id="addPage" class="page">
+				<div class="add-section">
+					<h2>Add Boarding House</h2>
+					Name: <input type="text" id="name" placeholder="Enter boarding house name" /><br />
+					Location:
+					<select id="newloc">
+						<option value="Jaro">Jaro</option>
+						<option value="La Paz">La Paz</option>
+						<option value="Molo">Molo</option></select
+					><br />
+					Price: <input type="number" id="newprice" placeholder="Monthly price" /><br />
+					Owner: <input type="text" id="owner" placeholder="Owner name" /><br />
+					Contact: <input type="text" id="contact" placeholder="Contact number" /><br />
+					<button onclick="add()">➕ Add</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			let houses = [];
+			//**************************************************************************
+			function showPage(page) {
+				document.getElementById("searchPage").classList.remove("active");
+				document.getElementById("addPage").classList.remove("active");
+
+				let buttons = document.querySelectorAll(".tab-button");
+				buttons.forEach((btn) => btn.classList.remove("active"));
+
+				if (page == "search") {
+					document.getElementById("searchPage").classList.add("active");
+					buttons[0].classList.add("active");
+				} else {
+					document.getElementById("addPage").classList.add("active");
+					buttons[1].classList.add("active");
+				}
+			}
+			//**************************************************************************
+			function show() {
+				let text = "";
+				if (houses.length == 0) {
+					text = "No boarding houses yet";
+				} else {
+					for (let i = 0; i < houses.length; i++) {
+						text += "<p><b>" + houses[i][0] + "</b><br>";
+						text += "Location: " + houses[i][1] + "<br>";
+						text += "Price: P" + houses[i][2] + "<br>";
+						text += "Owner: " + houses[i][3] + "<br>";
+						text += "Contact: " + houses[i][4] + "</p>";
+					}
+				}
+				document.getElementById("results").innerHTML = text;
+			}
+			//**************************************************************************
+			function search() {
+				let location = document.getElementById("loc").value;
+				let maxprice = document.getElementById("price").value;
+				let text = "";
+
+				for (let i = 0; i < houses.length; i++) {
+					let ok = true;
+					if (location != "" && houses[i][1] != location) ok = false;
+					if (maxprice != "" && houses[i][2] > maxprice) ok = false;
+
+					if (ok) {
+						text += "<p><b>" + houses[i][0] + "</b><br>";
+						text += "Location: " + houses[i][1] + "<br>";
+						text += "Price: P" + houses[i][2] + "<br>";
+						text += "Owner: " + houses[i][3] + "<br>";
+						text += "Contact: " + houses[i][4] + "</p>";
+					}
+				}
+				if (text == "") text = "No houses found";
+				document.getElementById("results").innerHTML = text;
+			}
+			//**************************************************************************
+			function add() {
+				let name = document.getElementById("name").value;
+				let loc = document.getElementById("newloc").value;
+				let price = document.getElementById("newprice").value;
+				let owner = document.getElementById("owner").value;
+				let contact = document.getElementById("contact").value;
+
+				if (name != "" && loc != "" && price != "" && owner != "" && contact != "") {
+					houses.push([name, loc, price, owner, contact]);
+					alert("House added!");
+					show();
+
+					document.getElementById("name").value = "";
+					document.getElementById("newprice").value = "";
+					document.getElementById("owner").value = "";
+					document.getElementById("contact").value = "";
+				} else {
+					alert("Please fill all fields");
+				}
+			}
+			show();
+		</script>
+	</body>
+</html>
