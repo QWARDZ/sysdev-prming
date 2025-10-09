@@ -9,7 +9,6 @@ A comprehensive, multi-platform clinic management system designed to streamline 
 - Setting clinic appointments often takes too much time.
 - Manual recording of schedules leads to errors and confusion.
 - It is difficult to view appointment details and reminders easily.
-- Lack of centralized system for managing patient appointments across different roles.
 
 ---
 
@@ -17,7 +16,6 @@ A comprehensive, multi-platform clinic management system designed to streamline 
 
 - To make appointment booking faster and more organized.
 - To simplify the process of viewing and managing schedules.
-- To store appointment records safely in one place.
 - To minimize errors in recording information.
 - To improve the overall flow of clinic scheduling.
 - To provide role-based access for patients, staff, and administrators.
@@ -30,11 +28,9 @@ The system provides the following capabilities:
 
 - Online booking and cancellation of appointments
 - View schedules, reminders, and appointment details
-- Store appointment information securely
 - Three user role management (Patient, Staff, Admin)
 - Appointment status tracking (upcoming, completed, cancelled)
 - Dashboard with real-time statistics
-- Multi-platform implementation (Web, React, Python)
 
 ---
 
@@ -47,7 +43,6 @@ The system provides the following capabilities:
 - No real-time email/SMS notifications
 - No doctor profile management or availability calendar
 - No medical records or prescription management
-- Limited to pre-defined doctors (Dr. Smith, Dr. Johnson, Dr. Williams)
 
 ---
 
