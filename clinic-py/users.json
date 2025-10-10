@@ -6,12 +6,6 @@
     "role": "patient"
   },
   {
-    "email": "staff@clinic.com",
-    "password": "staff123",
-    "name": "Sarah Staff",
-    "role": "staff"
-  },
-  {
     "email": "admin@clinic.com",
     "password": "admin123",
     "name": "Alex Admin",

@@ -16,7 +16,6 @@ appointments = load_data(APPOINTMENTS_FILE)
 if not users:
     users = [
         {'email': 'patient@clinic.com', 'password': 'patient123', 'name': 'John Patient', 'role': 'patient'},
-        {'email': 'staff@clinic.com', 'password': 'staff123', 'name': 'Sarah Staff', 'role': 'staff'},
         {'email': 'admin@clinic.com', 'password': 'admin123', 'name': 'Alex Admin', 'role': 'admin'}
     ]
     save_data(USERS_FILE, users)
@@ -33,7 +32,6 @@ def main_menu():
     print("=" * 40)
     print("\n1. Login  2. Register  3. Exit")
     print("\nDemo: patient@clinic.com/patient123")
-    print("      staff@clinic.com/staff123")
     print("      admin@clinic.com/admin123")
     return input("\nOption: ")
 
@@ -86,17 +84,12 @@ def patient_menu():
 def book_appointment():
     clear()
     print("=== BOOK ===")
-    doctors = ['Dr. Johnson', 'Dr. Chen', 'Dr. Rodriguez']
-    for i, d in enumerate(doctors, 1): print(f"{i}. {d}")
-    doc = input("Doctor (1-3): ")
-    if doc not in ['1','2','3']:
-        print("Invalid!")
-        input("Press Enter...")
-        return
+    doctor = 'Dr. Johnson'
+    print(f"Doctor: {doctor}")
     date = input("Date (YYYY-MM-DD): ")
     time = input("Time (HH:MM): ")
     apt = {'id': f'APT-{len(appointments)+1}', 'patient': current_user['email'], 
-           'patient_name': current_user['name'], 'doctor': doctors[int(doc)-1],
+           'patient_name': current_user['name'], 'doctor': doctor,
            'date': date, 'time': time, 'status': 'upcoming'}
     appointments.append(apt)
     save_data(APPOINTMENTS_FILE, appointments)
@@ -137,60 +130,16 @@ def cancel_appointment():
         except: print("Invalid!")
     input("Press Enter...")
 
-def staff_menu():
-    global current_user
-    while True:
-        clear()
-        print(f"=== STAFF: {current_user['name']} ===")
-        print("1. View All  2. Update Status  3. Logout")
-        choice = input("Option: ")
-        if choice == '1': view_all_appointments()
-        elif choice == '2': update_status()
-        elif choice == '3': current_user = None; break
-
-def view_all_appointments():
-    clear()
-    print("=== ALL APPOINTMENTS ===")
-    if not appointments:
-        print("No appointments")
-    else:
-        for i, a in enumerate(appointments, 1):
-            print(f"[{i}] {a['id']} - {a['patient_name']} - {a['doctor']} - {a['date']} {a['time']} - {a['status']}")
-    input("Press Enter...")
-
-def update_status():
-    clear()
-    print("=== UPDATE STATUS ===")
-    if not appointments:
-        print("No appointments")
-        input("Press Enter...")
-        return
-    for i, a in enumerate(appointments, 1):
-        print(f"[{i}] {a['id']} - {a['status']}")
-    choice = input("Appointment # (0=back): ")
-    if choice != '0':
-        try:
-            statuses = ['upcoming', 'completed', 'cancelled']
-            print("1. upcoming  2. completed  3. cancelled")
-            s = input("New status (1-3): ")
-            if s in ['1','2','3']:
-                appointments[int(choice)-1]['status'] = statuses[int(s)-1]
-                save_data(APPOINTMENTS_FILE, appointments)
-                print("Updated!")
-        except: print("Invalid!")
-    input("Press Enter...")
-
 def admin_menu():
     global current_user
     while True:
         clear()
         print(f"=== ADMIN: {current_user['name']} ===")
-        print("1. All Users  2. Add Staff  3. Stats  4. Logout")
+        print("1. All Users  2. Stats  3. Logout")
         choice = input("Option: ")
         if choice == '1': view_all_users()
-        elif choice == '2': add_staff()
-        elif choice == '3': show_stats()
-        elif choice == '4': current_user = None; break
+        elif choice == '2': show_stats()
+        elif choice == '3': current_user = None; break
 
 def view_all_users():
     clear()
@@ -199,26 +148,11 @@ def view_all_users():
         print(f"[{i}] {u['name']} - {u['email']} - {u.get('role', 'patient')}")
     input("Press Enter...")
 
-def add_staff():
-    clear()
-    print("=== ADD STAFF ===")
-    name = input("Name: ")
-    email = input("Email: ")
-    password = input("Password: ")
-    if any(u['email'] == email for u in users):
-        print("Email exists!")
-    else:
-        users.append({'email': email, 'password': password, 'name': name, 'role': 'staff'})
-        save_data(USERS_FILE, users)
-        print("Staff added!")
-    input("Press Enter...")
-
 def show_stats():
     clear()
     print("=== STATISTICS ===")
     print(f"Users: {len(users)}")
     print(f"Patients: {len([u for u in users if u.get('role')=='patient'])}")
-    print(f"Staff: {len([u for u in users if u.get('role')=='staff'])}")
     print(f"Appointments: {len(appointments)}")
     print(f"Upcoming: {len([a for a in appointments if a['status']=='upcoming'])}")
     print(f"Completed: {len([a for a in appointments if a['status']=='completed'])}")
@@ -232,7 +166,6 @@ def main():
             if login():
                 role = current_user.get('role', 'patient')
                 if role == 'admin': admin_menu()
-                elif role == 'staff': staff_menu()
                 else: patient_menu()
         elif choice == '2': register()
         elif choice == '3': clear(); print("Goodbye!"); break
