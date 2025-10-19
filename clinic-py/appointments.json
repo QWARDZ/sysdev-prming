@@ -1,20 +1,2 @@
 [
-  {
-    "id": "APT-1",
-    "patient": "patient@clinic.com",
-    "patient_name": "John Patient",
-    "doctor": "Dr. Johnson",
-    "date": "2025-6-23",
-    "time": "9",
-    "status": "upcoming"
-  },
-  {
-    "id": "APT-2",
-    "patient": "patient@clinic.com",
-    "patient_name": "John Patient",
-    "doctor": "Dr. Johnson",
-    "date": "",
-    "time": "",
-    "status": "upcoming"
-  }
 ]

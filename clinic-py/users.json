@@ -1,14 +1,7 @@
 [
-  {
-    "email": "patient@clinic.com",
-    "password": "patient123",
-    "name": "John Patient",
-    "role": "patient"
-  },
-  {
-    "email": "admin@clinic.com",
-    "password": "admin123",
-    "name": "Edward Admin",
-    "role": "admin"
-  }
+	{
+		"email": "user@clinic.com",
+		"password": "123",
+		"name": "John"
+	}
 ]
